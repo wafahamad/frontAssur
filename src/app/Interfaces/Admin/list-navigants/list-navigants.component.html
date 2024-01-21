@@ -1,0 +1,34 @@
+<app-nav-admin></app-nav-admin>
+<div class="container">
+<table class="table">
+    <thead>
+      <tr>
+        <th>Matricule</th>
+        <th>Nom Prénom</th>
+        <th>Date Naissance</th>
+        <th>Fonction</th>
+        <th>Numéro compte Bancaire</th>
+        <th> état civil</th>
+        <th>bulletin de soin</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let navigant of navigants">
+        <td>{{ navigant.matricule }}</td>
+        <td>{{ navigant.nom }}</td>
+        <td>{{ navigant.dateNaissance|date }}</td>
+        <td>{{ navigant.fonction }}</td>
+        <td>{{ navigant.numCompte }}</td>
+        <td>
+            <ng-container *ngIf="navigant.marie; else celibataire">Marié</ng-container>
+            <ng-template #celibataire>Célibataire</ng-template>
+          </td>
+          <td>
+            <button (click)="showBulletin(navigant.matricule)" class="btn btn-primary"
+                   style="margin-left: 10px">show</button>
+          </td>
+ 
+      </tr>
+    </tbody>
+  </table>
+</div>

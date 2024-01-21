@@ -1,0 +1,11 @@
+<app-nav></app-nav>
+<div>
+    <h2>Envoyer Reclamation</h2>
+  
+    <form [formGroup]="reclamationF" (ngSubmit)="submitReclamation()">
+      <label for="contenu">Contenu:</label>
+      <input type="text" id="contenu" formControlName="contenu" required>
+  
+      <button type="submit" [disabled]="!reclamationF.valid">envoyer </button>
+    </form>
+  </div>

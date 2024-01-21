@@ -1,0 +1,107 @@
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 90px 0 0;
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+    z-index: 99;
+}
+
+@media (max-width: 767.98px) {
+    .sidebar {
+        top: 11.5rem;
+        padding: 0;
+    }
+}
+
+.navbar {
+    box-shadow: inset 0 -1px 0 rgba(0, 0, 0, .1);
+}
+
+@media (min-width: 767.98px) {
+    .navbar {
+        top: 0;
+        position: sticky;
+        z-index: 999;
+    }
+}
+
+.sidebar .nav-link {
+    color: #333;
+}
+
+.sidebar .nav-link.active {
+    color: #0d6efd;
+}
+
+li:hover {
+    background-color: #8D77AB;
+    border-style: solid;
+    border-radius: 30px;
+}
+
+.container-fluid {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgb(133, 63, 56);
+}
+
+.sidebar .nav-item .collapse {
+    -webkit-animation-name: growIn;
+    animation-name: growIn;
+    -webkit-animation-duration: 200ms;
+    animation-duration: 200ms;
+    -webkit-animation-timing-function: transform cubic-bezier(0.18, 1.25, 0.4, 1), opacity cubic-bezier(0, 1, 0.4, 1);
+    animation-timing-function: transform cubic-bezier(0.18, 1.25, 0.4, 1), opacity cubic-bezier(0, 1, 0.4, 1);
+    
+}
+.dark-nav {
+    background-color: #222;
+  }
+  .bgNav{
+    background-color:#d5b1ab
+  }
+  .titleNav{
+    color: azure;
+    text-align: left;
+  }
+
+  .NomUser{
+    text-align: center;
+    margin: 15px 10px 5px 120px;
+    width:300px;
+    
+  }
+  .imgUser{
+    width:50px;
+    height:50px
+  }
+  .navBrand {
+    color: azure;
+    font-family: Fantasy;
+    font-weight: 100;
+    display: flex; /* Utilisez flexbox pour aligner les éléments */
+    align-items: center; /* Aligner les éléments verticalement */
+    width: 100%;
+    text-align: center;
+}
+
+.logo-img {
+    width: 60px; /* Ajustez la largeur du logo selon vos besoins */
+    height: auto; /* Pour maintenir le ratio d'aspect */
+    margin-right: 10px; /* Ajoute une marge à droite du logo */
+}
+
+.logo-title {
+    margin: 0; /* Supprime la marge par défaut du paragraphe */
+    font-size: 18px; /* Ajustez la taille de la police selon vos besoins */
+}

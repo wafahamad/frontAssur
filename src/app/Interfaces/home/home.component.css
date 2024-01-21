@@ -1,0 +1,44 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.background-image {
+    background-image: url('./../../../assets/login.jpg'); /* Remplacez 'chemin/vers/votre/image.jpg' par le chemin de votre image de fond */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* 100% de la hauteur de la fenêtre visible */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff; /* Couleur du texte, ajustez selon vos besoins */
+    text-align: center;
+}
+
+/* Vous pouvez ajouter d'autres styles CSS pour personnaliser davantage votre page ici */
+h1 {
+    font-size: 2em;
+}
+
+p {
+    font-size: 1.5em;
+}
+.buttonLogin {
+    width: 250px;
+    height: 80px;
+    background-color: black;
+    margin-bottom: 50px;
+    margin-left: 5px; /* Espace entre les boutons */
+}
+
+.row {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+.col-md-6 {
+    width: 100%;
+}

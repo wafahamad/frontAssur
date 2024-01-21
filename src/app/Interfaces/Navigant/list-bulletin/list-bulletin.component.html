@@ -1,0 +1,52 @@
+<app-nav></app-nav>
+
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Numéro Bulletin</th>
+        <th>Malade</th>
+        <th>Date Soin</th>
+        <th>Montant Dépense</th>
+        <th>Date Envoi GAT</th>
+        <th>Date Remboursement</th>
+        <th>Montant Remboursé</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bulletin of bulletins; let i = index">
+        <td>{{ bulletin.numBs }}</td>
+        <td>{{ bulletin.malade }}</td>
+        <td>{{ bulletin.dateSoin | date }}</td>
+        <td>{{ bulletin.montantDepense | currency:'TND ':'symbol':'1.2-2' }}</td>
+        <td>{{ bulletin.dateEnvoiGAT | date }}</td>
+        <td>{{ bulletin.dateRem | date }}</td>
+        <td>{{ bulletin.montantRemborse | currency:'TND ':'symbol':'1.2-2' }}</td>
+        <td>{{ bulletin.status }}</td>
+        <td>
+          <button class="btn btn-info" (click)="showDetails()">Show Details</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+<div  *ngIf="show" class="details-section">
+  <div  *ngFor="let detail of details" class="detail-container">
+    <h4>Details for Bulletin </h4>
+    <ul>
+      <li ><strong>Type d'Activité: </strong>{{ detail.type_act }}</li>
+      <li><strong>Montant d'Activité Dépensé:</strong> {{ detail.montant_act_dep |currency:'TND':'symbol':'1.2-2' }}</li>
+    </ul>
+  </div>
+
+  <div *ngFor="let bord of bordereau" class="bordereau-container">
+    <h4>Bordereau for Bulletin </h4>
+    <ul>
+      <li ><strong>Type d'Activité:</strong> {{ bord.type_act }}</li>
+      <li> <strong>Montant d'Activité Dépensé:</strong> {{ bord.montant_act_dep  |currency:'TND ':'symbol':'1.2-2'}}</li>
+      <li><strong>Montant d'Activité Remboursé:</strong> {{ bord.montant_act_rembor|currency:'TND':'symbol':'1.2-2' }}</li>
+    </ul>
+  </div>
+</div>
+</div>

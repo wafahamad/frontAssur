@@ -1,0 +1,61 @@
+/* home.component.css */
+
+body {
+    display: flex;
+    margin: 0;
+    height: 100vh;
+}
+
+.app-container {
+    display: flex;
+    flex: 1; /* Utilise tout l'espace disponible horizontalement */
+}
+
+.app-container app-nav,
+.app-container .navigant-info {
+    flex: 1; /* Partage l'espace disponible horizontalement */
+}
+
+.navigant-info {
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 320px;
+    max-width: 600px; /* Ajustez la largeur maximale selon vos besoins */
+    width: 100%; /* Garantit que le contenu ne dépasse pas la largeur maximale */
+}
+
+h2 {
+    color: #333;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+strong {
+    font-weight: bold;
+}
+button {
+    margin-right: 5px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+.mt-4{
+    background-color: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 320px;
+    max-width: 600px; /* Ajustez la largeur maximale selon vos besoins */
+    width: 100%; 
+}

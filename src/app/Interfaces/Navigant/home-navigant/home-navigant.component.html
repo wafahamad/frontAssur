@@ -1,0 +1,43 @@
+<app-nav></app-nav>
+<div class="navigant-info">
+    <h2>Informations du Navigant</h2>
+    <ul>
+      <li><strong>Matricule:</strong> {{ navigant.matricule }}</li>
+      <li><strong>Nom:</strong> {{ navigant.nom }}</li>
+      <li><strong>Date de Naissance:</strong> {{ navigant.dateNaissance | date }}</li>
+      <li><strong>Numéro de Compte:</strong> {{ navigant.numCompte }}</li>
+      <li><strong>Fonction:</strong> {{ navigant.fonction }}</li>
+      <li><strong>Marié:</strong> {{ navigant.marie ? 'Oui' : 'Non' }}</li>
+      <ng-container *ngIf="navigant.marie">
+        <!-- Affiche le nom du conjoint seulement si le navigant est marié -->
+        <li><strong>Nom du Conjoint:</strong> {{ navigant.nomConjoint }}</li>
+      </ng-container>
+   
+        <li *ngIf="enfants && enfants.length > 0"><strong>Enfants:</strong>
+          <ul >
+            <li *ngFor="let enfant of enfants">
+              {{ enfant.nom }} {{ enfant.prenom }}
+              <!-- Add button to delete the child -->
+              <button class="btn btn-danger btn-sm ml-2" (click)="supprimerEnfant(enfant.idE)">Supprimer</button>
+            </li>
+          </ul>
+        </li>
+      
+    </ul>
+    <button class="btn btn-success mt-3" (click)="showEnfantForm()">Ajouter Enfant</button>
+
+  </div>
+  <div *ngIf="showForm" class="mt-4">
+    <form [formGroup]="enfantForm" (ngSubmit)="ajouterEnfant()">
+        <div class="form-group">
+            <label for="nom">Nom:</label>
+            <input type="text" class="form-control" formControlName="nom" required>
+        </div>
+        <div class="form-group">
+            <label for="prenom">Prénom:</label>
+            <input type="text" class="form-control" formControlName="prenom" required>
+        </div>
+        <!-- Button to submit the form -->
+        <button type="submit" class="btn btn-success">Ajouter Enfant</button>
+    </form>
+</div>
