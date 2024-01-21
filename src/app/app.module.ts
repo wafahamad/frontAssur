@@ -19,6 +19,7 @@ import { NavAdminComponent } from './Interfaces/Admin/nav-admin/nav-admin.compon
 import { ListBsNavigComponent } from './Interfaces/Admin/list-bs-navig/list-bs-navig.component';
 import { GererBulletinsComponent } from './Interfaces/Admin/gerer-bulletins/gerer-bulletins.component';
 import { ListReclamationsComponent } from './Interfaces/Admin/list-reclamations/list-reclamations.component';
+import { AllBulletinComponent } from './Interfaces/Admin/all-bulletin/all-bulletin.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ListReclamationsComponent } from './Interfaces/Admin/list-reclamations/
     NavAdminComponent,
     ListBsNavigComponent,
     GererBulletinsComponent,
-    ListReclamationsComponent
+    ListReclamationsComponent,
+    AllBulletinComponent
   ],
   imports: [
     BrowserModule,
