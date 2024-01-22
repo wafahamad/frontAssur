@@ -12,6 +12,7 @@ export class Bulletin {
         public  dateRem: Date,
         public  montantRemborse: number,
         public  status: string,
+        public navigantId : number,
         public navigant:Navigant,
         public detailDepenses?: DetailDepense[],
         public bordereauGATs?: BordereauGAT[],

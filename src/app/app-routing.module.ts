@@ -12,6 +12,7 @@ import { ListNavigantsComponent } from './Interfaces/Admin/list-navigants/list-n
 import { ListBsNavigComponent } from './Interfaces/Admin/list-bs-navig/list-bs-navig.component';
 import { ListReclamationsComponent } from './Interfaces/Admin/list-reclamations/list-reclamations.component';
 import { AllBulletinComponent } from './Interfaces/Admin/all-bulletin/all-bulletin.component';
+import { GererBulletinsComponent } from './Interfaces/Admin/gerer-bulletins/gerer-bulletins.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -27,6 +28,7 @@ const routes: Routes = [
   {path:'listBsNavigant/:matricule',title:'list bulletin de soin du navigant ${matricule}',component:ListBsNavigComponent},
   {path:'listReclamation',title:'list Reclamations',component:ListReclamationsComponent},
   {path:'allBulletin',title:'list all bulletins',component:AllBulletinComponent},
+  {path:'gererBulletin',title:'Gérer Bulletin',component:GererBulletinsComponent},
   
   
 

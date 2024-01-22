@@ -1,1 +1,69 @@
 <app-nav-admin></app-nav-admin>
+<div class="container">
+    <h2>Formulaire de Bulletin de soin</h2>
+  
+    <form [formGroup]="bulletinF" (ngSubmit)="submit()">
+      <div class="form-group">
+        <label for="numBs">Numéro de Bulletin:</label>
+        <input type="text" id="numBs" formControlName="numBs" />
+      </div>
+  
+      <div class="form-group">
+        <label for="dateSoin">Date de Soin:</label>
+        <input type="date" id="dateSoin" formControlName="dateSoin" />
+      </div>
+  
+      <div class="form-group">
+        <label for="status">Statut:</label>
+        <input type="text" id="status" formControlName="status" />
+      </div>
+  
+      <div class="form-group">
+        <label for="navigantId">Navigant ID:</label>
+        <input type="text" id="navigantId" formControlName="navigantId" />
+      </div>
+  
+      <div class="form-group">
+        <label>Type de Sélection:</label>
+        <div>
+          <label>
+            <input type="radio" formControlName="typeSelection" value="navigant" /> Navigant
+          </label>
+          <label>
+            <input type="radio" formControlName="typeSelection" value="conjoint" /> Conjoint
+          </label>
+          <label>
+            <input type="radio" formControlName="typeSelection" value="enfant" /> Enfant
+          </label>
+        </div>
+      </div>
+  
+      <!-- Add the child dropdown inside the form -->
+      <div *ngIf="bulletinF.get('typeSelection')?.value === 'enfant'">
+        <label for="selectedEnfant">Sélectionnez un Enfant:</label>
+        <select id="selectedEnfant" formControlName="selectedEnfant">
+            
+          <option *ngFor="let enfant of enfants" [value]="enfant.idE">
+            {{ enfant.nom }} {{ enfant.prenom }}
+          </option>
+        </select>
+      </div>
+  
+      <button type="submit" [disabled]="!bulletinF.valid">Ajouter</button>
+    </form>
+  
+    <!-- Display other information based on the selected type -->
+    <div *ngIf="navigant">
+      <h3>Informations du Navigant</h3>
+      <p>Nom: {{ navigant.nom }}</p>
+      
+  
+      <!-- Display information for the Conjoint if the type is "conjoint" -->
+      <div *ngIf="bulletinF.get('typeSelection')?.value === 'conjoint'">
+        <h3>Informations du Conjoint</h3>
+        <p>Nom: {{ navigant.nomConjoint }}</p>
+        
+      </div>
+    </div>
+  </div>
+  
