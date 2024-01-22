@@ -1,1 +1,29 @@
-<p>ahhh works!</p>
+<div class="container">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Matricule</th>
+          <th>Nom Prénom</th>
+          <th>Date Naissance</th>
+          <th>Fonction</th>
+          <th>Numéro compte Bancaire</th>
+          <th>État civil</th>
+          <th>Bulletin de soin</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bulletin of bulletins">
+          <td>{{ bulletin.numBs }}</td>
+        
+          <td>
+            <div *ngFor="let bordereau of bordereau">
+              <div *ngIf="bordereau.bulletinNum === bulletin.numBs">
+                {{ bordereau.type_act }}
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

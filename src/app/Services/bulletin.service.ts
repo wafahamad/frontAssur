@@ -17,7 +17,7 @@ export class BulletinService {
   getBulletinsByNavigant(matricule: number): Observable<Bulletin[]> {
     return this.http.get<Bulletin[]>(`${apiUrl}/byNavigant/${matricule}`);
   }
-  getBulletinByNumBs(numBs: string): Observable<Bulletin> {
+  getBulletinByNumBs(numBs: number): Observable<Bulletin> {
     return this.http.get<Bulletin>(`${apiUrl}/${numBs}`);
   }
 
@@ -25,11 +25,11 @@ export class BulletinService {
     return this.http.post<Bulletin>(`${apiUrl}/ajout`, bulletin);
   }
 
-  updateBulletin(numBs: string, updatedBulletin: Bulletin): Observable<any> {
+  updateBulletin(numBs: number, updatedBulletin: Bulletin): Observable<any> {
     return this.http.put<any>(`${apiUrl}/updateBull/${numBs}`, updatedBulletin);
   }
 
-  deleteBulletin(numBs: string): Observable<any> {
+  deleteBulletin(numBs: number): Observable<any> {
     return this.http.delete<any>(`${apiUrl}/deleteBull/${numBs}`);
   }
 }

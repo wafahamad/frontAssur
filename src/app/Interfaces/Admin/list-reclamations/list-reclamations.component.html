@@ -1,6 +1,43 @@
-<ul >
-    <li *ngFor="let reclamation of reclamations">
-         
-          <p>Contenu: {{ reclamation?.contenu }}</p>
-    </li>
+<nav class="navbar p-3">
+      <div
+        class="d-flex col-12 col-md-3 col-lg-2 mb-2 mb-lg-0 flex-wrap flex-md-nowrap justify-content-between"
+      >
+      <a class="navbar-brand navBrand" href="#">
+          <img src="./../../../../assets/logo.png" alt="Logo" class="logo-img">
+          <p class="logo-title">AssurNavigant</p>
+        </a>
+        <button
+          class="navbar-toggler d-md-none collapsed mb-3"
+          type="button"
+          data-toggle="collapse"
+          data-target="#sidebar"
+          aria-controls="sidebar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+    
+        <div>
+          <h2 class="NomUser">
+            Espace Admin
+          </h2>
+        </div>
+      </div>
+    </nav>
+    <ul class="reclamations-list">
+      <li *ngFor="let reclamation of reclamations" [class.selected]="reclamation.lue">
+        <div class="reclamation-item">
+          <div class="checkbox-container">
+            <input type="checkbox" [(ngModel)]="reclamation.lue" (change)="updateSelection(reclamation)">
+          </div>
+          <div class="content">
+            <p class="navigant">Matricule Navigant: {{ reclamation.navigantId }}</p>
+            <p class="contenu">{{ reclamation.contenu }}</p>
+          </div>
+        </div>
+      </li>
     </ul>
+    
+    

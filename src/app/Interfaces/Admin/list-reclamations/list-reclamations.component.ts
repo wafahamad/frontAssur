@@ -12,7 +12,13 @@ export class ListReclamationsComponent implements OnInit {
   constructor(private servRec:ReclamationService){}
   ngOnInit(): void {
    this.servRec.getReclamations().subscribe((data)=>
-   this.reclamations=data)
+   this.reclamations = data.reverse())
   }
-
+  updateSelection(reclamation: Reclamation) {
+    this.servRec.updateReclamation(reclamation).subscribe(updatedReclamation => {
+      console.log('Réclamation mise à jour:', updatedReclamation);
+    }, error => {
+      console.error('Erreur lors de la mise à jour de la réclamation:', error);
+    });
+  }
 }

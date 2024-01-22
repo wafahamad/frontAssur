@@ -11,6 +11,7 @@ import { LoginAdminComponent } from './Interfaces/Admin/login-admin/login-admin.
 import { ListNavigantsComponent } from './Interfaces/Admin/list-navigants/list-navigants.component';
 import { ListBsNavigComponent } from './Interfaces/Admin/list-bs-navig/list-bs-navig.component';
 import { ListReclamationsComponent } from './Interfaces/Admin/list-reclamations/list-reclamations.component';
+import { AllBulletinComponent } from './Interfaces/Admin/all-bulletin/all-bulletin.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -25,6 +26,8 @@ const routes: Routes = [
   {path:'listNavigant',title:'list Navigants',component:ListNavigantsComponent},
   {path:'listBsNavigant/:matricule',title:'list bulletin de soin du navigant ${matricule}',component:ListBsNavigComponent},
   {path:'listReclamation',title:'list Reclamations',component:ListReclamationsComponent},
+  {path:'allBulletin',title:'list all bulletins',component:AllBulletinComponent},
+  
   
 
   

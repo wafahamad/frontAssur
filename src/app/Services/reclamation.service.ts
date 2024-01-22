@@ -25,7 +25,9 @@ export class ReclamationService {
     return this.http.post<Reclamation>(`${url}/envoyer/${navigantMatricule}`, reclamation);
   }
  
-
+  updateReclamation(reclamation: Reclamation): Observable<Reclamation> {
+    return this.http.put<Reclamation>(`${url}/${reclamation.num}`, reclamation);
+  }
   deleteReclamation(num: number): Observable<any> {
     return this.http.delete<any>(`${url}/${num}`);
   }

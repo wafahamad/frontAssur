@@ -6,6 +6,7 @@ export class BordereauGAT {
         public  type_act: string,
         public montant_act_dep: number,
         public montant_act_rembor: number,
+        public bulletinNum:number,
         public bulletin:Bulletin
 
     ){}

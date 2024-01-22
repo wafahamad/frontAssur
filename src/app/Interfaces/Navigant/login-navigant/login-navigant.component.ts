@@ -49,6 +49,7 @@ ngOnInit(): void {
         (error) => {
           console.error('Invalid username or password', error);
           // Handle error if needed
+          alert('Invalid matricule or password');
         }
       );
     }
