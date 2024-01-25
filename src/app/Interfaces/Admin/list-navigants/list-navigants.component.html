@@ -1,5 +1,12 @@
 <app-nav-admin></app-nav-admin>
 <div class="container">
+  <form (ngSubmit)="rechercheNavigant()">
+    <div class="form-group">
+      <label for="matriculeInput">Matricule:</label>
+      <input type="text" id="matriculeInput" name="matricule" [(ngModel)]="matriculeToSearch" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+  </form>
 <table class="table">
     <thead>
       <tr>
@@ -10,6 +17,7 @@
         <th>Numéro compte Bancaire</th>
         <th> état civil</th>
         <th>bulletin de soin</th>
+        <th>supprimer</th>
       </tr>
     </thead>
     <tbody>
@@ -27,7 +35,10 @@
             <button (click)="showBulletin(navigant.matricule)" class="btn btn-primary"
                    style="margin-left: 10px">show</button>
           </td>
- 
+          <td>  
+            <input type="button" value="supprimer" class="btn btn-primary" (click)="supprimerNavigant(navigant.matricule)" >
+
+          </td>
       </tr>
     </tbody>
   </table>

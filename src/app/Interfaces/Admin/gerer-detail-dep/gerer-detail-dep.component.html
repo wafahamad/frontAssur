@@ -1,0 +1,16 @@
+<app-nav-admin></app-nav-admin>
+<div class="container">
+    <h2>Formulaire de Detail Depensé</h2>
+    <form [formGroup]="detailsF" (ngSubmit)="submit()">
+        <div class="form-group">
+          <label for="type_act">type acte :</label>
+          <input type="text" id="type_act" formControlName="type_act" />
+        </div>
+    
+        <div class="form-group">
+          <label for="montant_act_dep">montant depensé:</label>
+          <input type="number" id="montant_act_dep" formControlName="montant_act_dep" />
+        </div>
+        <button type="submit" [disabled]="!detailsF.valid">Ajouter</button>
+    </form>
+</div>

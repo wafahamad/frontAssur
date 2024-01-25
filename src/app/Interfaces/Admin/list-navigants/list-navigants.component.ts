@@ -9,7 +9,9 @@ import { NavigantServiceService } from 'src/app/Services/navigant-service.servic
   styleUrls: ['./list-navigants.component.css']
 })
 export class ListNavigantsComponent implements OnInit {
+  matricule:any;
   navigants!:Navigant[];
+  matriculeToSearch!: number;
   constructor(private router:Router,private servNavigant:NavigantServiceService){}
   ngOnInit(): void {
     this.servNavigant.getNavigants().subscribe((data)=>
@@ -17,6 +19,17 @@ export class ListNavigantsComponent implements OnInit {
   }
   showBulletin(matricule :number){
     this.router.navigate([`/listBsNavigant/${matricule}`])
+  }
+  supprimerNavigant(matricule: number) {
+    this.servNavigant.deleteNavigant(matricule).subscribe(() => {
+      this.navigants = this.navigants.filter(navigant => navigant.matricule !== matricule);
+      alert(`Supprimer navigant,${matricule}`);
+    });
+  }
+  rechercheNavigant() {
+    this.servNavigant.getNavigantById(this.matriculeToSearch).subscribe(() => {
+      this.navigants = this.navigants.filter(navigant => navigant.matricule == this.matriculeToSearch);
+    });
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BordereauGAT } from 'src/app/Classes/bordereau-gat';
 import { Bulletin } from 'src/app/Classes/bulletin';
 import { DetailDepense } from 'src/app/Classes/detail-depense';
@@ -17,8 +18,6 @@ import { NavigantServiceService } from 'src/app/Services/navigant-service.servic
 })
 export class GererBulletinsComponent implements OnInit {
   bulletin!: Bulletin;
-  detail!: DetailDepense;
-  bordereau!: BordereauGAT;
   matricule: any;
   navigant!: Navigant;
   enfants: NavigEnfant[] = [];
@@ -26,15 +25,15 @@ export class GererBulletinsComponent implements OnInit {
 
   constructor(
     private servBull: BulletinService,
-    private servDetail: DetailDepenseService,
     private servNavigant: NavigantServiceService,
     private servEnfant: NavigEnfantService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
     this.initForm();
-    this.subscribeToNavigantIdChanges();
+    this.NavigantIdChanges();
   }
 
   initForm(): void {
@@ -48,20 +47,16 @@ export class GererBulletinsComponent implements OnInit {
     });
   }
 
-  subscribeToNavigantIdChanges(): void {
+  NavigantIdChanges(): void {
     const navigantIdControl = this.bulletinF.get('navigantId');
     if (navigantIdControl) {
       navigantIdControl.valueChanges.subscribe((navigantId) => {
         this.matricule = navigantId;
         this.enfants = [];
-        console.log('Matricule:', this.matricule);
         this.servEnfant.getNavigEnfants(this.matricule).subscribe(
           (enfants: NavigEnfant[]) => {
-            console.log('Enfants Response:', enfants); 
-  
-            if (enfants && enfants.length > 0) {
-              this.enfants = enfants; 
-              console.log('Enfants:', this.enfants);
+
+            if (enfants && enfants.length > 0) {              this.enfants = enfants; 
             } else {
               console.error('No enfants found for the given matricule:', this.matricule);
             }
@@ -72,7 +67,6 @@ export class GererBulletinsComponent implements OnInit {
     }
   }
   submit() {
-    console.log('Submit Reclamation called');
     if (this.bulletinF.valid) {
       const bulletinData = this.bulletinF.value;
       if (bulletinData.typeSelection === 'navigant') {
@@ -99,7 +93,6 @@ export class GererBulletinsComponent implements OnInit {
         );
         
       } else if (bulletinData.typeSelection === 'enfant') {
-        console.log('Type Selection is enfant');
         this.servEnfant.getNavigEnfants(this.matricule).subscribe(
           (enfants: NavigEnfant[]) => {
             if (enfants && enfants.length > 0) {
@@ -125,12 +118,12 @@ export class GererBulletinsComponent implements OnInit {
     }
   }
 
-  submitBulletin(bulletinData: any) {
-    console.log('Submit Bulletin called');
+  submitBulletin(bulletinData: Bulletin) {
     this.servBull.addBulletin(bulletinData).subscribe(
       (result) => {
         console.log('Bulletin request submitted successfully:', result);
         this.bulletinF.reset();
+        this.router.navigate([`/gererDetailDepense/${bulletinData.numBs}`])
       },
       (error) => {
         console.error('Error submitting Bulletin request:', error);

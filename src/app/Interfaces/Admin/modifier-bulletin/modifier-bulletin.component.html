@@ -1,0 +1,51 @@
+<!-- modifier-bulletin.component.html -->
+
+<div class="container">
+    <h2>Modifier Bulletin</h2>
+    <form [formGroup]="bulletinForm" (ngSubmit)="modifierBulletin()">
+      <!-- Malade -->
+      <div class="form-group">
+        <label for="malade">Malade:</label>
+        <input type="text" id="malade" formControlName="malade" class="form-control" />
+      </div>
+  
+      <!-- Date de Soin -->
+      <div class="form-group">
+        <label for="dateSoin">Date de Soin:</label>
+        <input type="text" id="dateSoin" formControlName="dateSoin" class="form-control" />
+      </div>
+  
+      <!-- Montant Dépense -->
+      <div class="form-group">
+        <label for="montantDepense">Montant Dépense:</label>
+        <input type="number" id="montantDepense" formControlName="montantDepense" class="form-control" />
+      </div>
+  
+      <!-- Date Envoi GAT -->
+      <div class="form-group">
+        <label for="dateEnvoiGAT">Date Envoi GAT:</label>
+        <input type="text" id="dateEnvoiGAT" formControlName="dateEnvoiGAT" class="form-control" />
+      </div>
+  
+      <!-- Date Remboursement -->
+      <div class="form-group">
+        <label for="dateRem">Date Remboursement:</label>
+        <input type="date" id="dateRem" formControlName="dateRem" class="form-control" />
+      </div>
+  
+      <!-- Montant Remboursé -->
+      <div class="form-group">
+        <label for="montantRemborse">Montant Remboursé:</label>
+        <input type="number" id="montantRemborse" formControlName="montantRemborse" class="form-control" />
+      </div>
+  
+      <!-- Status -->
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <input type="text" id="status" formControlName="status" class="form-control" />
+      </div>
+  
+      <button type="submit" class="btn btn-primary">Modifier Bulletin</button>
+    </form>
+  </div>
+  

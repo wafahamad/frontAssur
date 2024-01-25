@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BordereauGAT } from 'src/app/Classes/bordereau-gat';
 import { Bulletin } from 'src/app/Classes/bulletin';
 import { DetailDepense } from 'src/app/Classes/detail-depense';
@@ -17,12 +19,15 @@ export class AllBulletinComponent implements OnInit {
   bulletins!:Bulletin[];
   details!:DetailDepense[];
   bordereau!:BordereauGAT[];
+  bulletinF!:FormGroup;
+  hideForm = true;
+
   constructor(private servBull:BulletinService, private servDetail:DetailDepenseService,
-    private servBord:BordereauGATService){}
+    private servBord:BordereauGATService,private fb:FormBuilder,private router:Router){}
   ngOnInit(): void {
     this.servBull.getBulletins().subscribe((bulletinsData) => {
       console.log(bulletinsData);
-      this.bulletins = bulletinsData;
+      this.bulletins = bulletinsData.reverse();
       for(let i = 0; i < this.bulletins.length; i++) {
         this.servBord.getBordereauGATs(this.bulletins[i].numBs).subscribe((bordereaudata)=>{
           console.log(bordereaudata);
@@ -34,16 +39,7 @@ export class AllBulletinComponent implements OnInit {
         });
       }
     });
+    
   }
-
-  supprimerBulletin(numBs: number) {
-    this.servBull.deleteBulletin(numBs).subscribe(() => {
-      this.bulletins = this.bulletins.filter(bulletin => bulletin.numBs !== numBs);
-      alert(`Supprimer bulletin,${numBs}`);
-    });
-  }
-  modifierBulletin(numBs: number){
-
-  }
-
+  
 }

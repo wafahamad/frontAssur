@@ -20,6 +20,10 @@ import { ListBsNavigComponent } from './Interfaces/Admin/list-bs-navig/list-bs-n
 import { GererBulletinsComponent } from './Interfaces/Admin/gerer-bulletins/gerer-bulletins.component';
 import { ListReclamationsComponent } from './Interfaces/Admin/list-reclamations/list-reclamations.component';
 import { AllBulletinComponent } from './Interfaces/Admin/all-bulletin/all-bulletin.component';
+import { ChargementBordereauComponent } from './Interfaces/Admin/chargement-bordereau/chargement-bordereau.component';
+import { ModifierBulletinComponent } from './Interfaces/Admin/modifier-bulletin/modifier-bulletin.component';
+import { GererDetailDepComponent } from './Interfaces/Admin/gerer-detail-dep/gerer-detail-dep.component';
+import { DetailsComponent } from './Interfaces/Admin/details/details.component';
 
 
 @NgModule({
@@ -39,7 +43,11 @@ import { AllBulletinComponent } from './Interfaces/Admin/all-bulletin/all-bullet
     ListBsNavigComponent,
     GererBulletinsComponent,
     ListReclamationsComponent,
-    AllBulletinComponent
+    AllBulletinComponent,
+    ChargementBordereauComponent,
+    ModifierBulletinComponent,
+    GererDetailDepComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

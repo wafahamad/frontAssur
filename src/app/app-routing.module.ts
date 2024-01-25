@@ -13,6 +13,9 @@ import { ListBsNavigComponent } from './Interfaces/Admin/list-bs-navig/list-bs-n
 import { ListReclamationsComponent } from './Interfaces/Admin/list-reclamations/list-reclamations.component';
 import { AllBulletinComponent } from './Interfaces/Admin/all-bulletin/all-bulletin.component';
 import { GererBulletinsComponent } from './Interfaces/Admin/gerer-bulletins/gerer-bulletins.component';
+import { ModifierBulletinComponent } from './Interfaces/Admin/modifier-bulletin/modifier-bulletin.component';
+import { GererDetailDepComponent } from './Interfaces/Admin/gerer-detail-dep/gerer-detail-dep.component';
+import { ChargementBordereauComponent } from './Interfaces/Admin/chargement-bordereau/chargement-bordereau.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -29,6 +32,12 @@ const routes: Routes = [
   {path:'listReclamation',title:'list Reclamations',component:ListReclamationsComponent},
   {path:'allBulletin',title:'list all bulletins',component:AllBulletinComponent},
   {path:'gererBulletin',title:'Gérer Bulletin',component:GererBulletinsComponent},
+  {path:'modifierBulletin/:numBs',title:'modifier Bulletin de soin',component:ModifierBulletinComponent},
+  {path:'gererDetailDepense/:numBs',title:'Gérer detail depensé ',component:GererDetailDepComponent},
+  {path:'chargementBordereau',title:'chargement Bordereau',component:ChargementBordereauComponent},
+
+
+
   
   
 

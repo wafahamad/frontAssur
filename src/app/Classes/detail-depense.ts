@@ -5,6 +5,7 @@ export class DetailDepense {
         public  idD: number,
         public  type_act: string,
         public  montant_act_dep: number,
+        public 	bulletinNum:number,
         public bulletin:Bulletin
     ){}
 }

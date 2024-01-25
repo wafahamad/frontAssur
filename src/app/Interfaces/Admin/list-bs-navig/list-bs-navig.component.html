@@ -1,5 +1,12 @@
 <app-nav-admin></app-nav-admin>
 <div class="container">
+  <form (ngSubmit)="recherche()">
+    <div class="form-group">
+      <label for="Input">Numéro Bulletin:</label>
+      <input type="number" id="Input" name="numBs" [(ngModel)]="bulletinToSearch" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Rechercher</button>
+  </form>
     <table class="table">
       <thead>
         <tr>
@@ -12,6 +19,8 @@
           <th>Montant Remboursé</th>
           <th>Status</th>
           <th>Actions</th>
+          <th>modifier</th>
+          <th>supprimer</th>
         </tr>
       </thead>
       <tbody>
@@ -27,26 +36,36 @@
           <td>
             <button class="btn btn-info" (click)="showDetails()">Show Details</button>
           </td>
+          <td>  
+            <input type="button" value="modifier" class="btn btn-primary" (click)="modifierBulletin(bulletin.numBs)" >
+
+          </td>
+          <td>  
+            <input type="button" value="supprimer" class="btn btn-primary" (click)="supprimerBulletin(bulletin.numBs)" >
+
+          </td>
         </tr>
       </tbody>
+   
     </table>
-  <div  *ngIf="show" class="details-section">
-    <div  *ngFor="let detail of details" class="detail-container">
-      <h4>Details for Bulletin </h4>
-      <ul>
-        <li ><strong>Type d'Activité: </strong>{{ detail.type_act }}</li>
-        <li><strong>Montant d'Activité Dépensé:</strong> {{ detail.montant_act_dep |currency:'TND':'symbol':'1.2-2' }}</li>
-      </ul>
+    <div  *ngIf="show" class="details-section">
+      <div  *ngFor="let detail of details" class="detail-container" >
+        <h4>Details for Bulletin </h4>
+        <ul>
+          <li ><strong>Type d'Acte: </strong>{{ detail.type_act }}</li>
+          <li><strong>Montant d'Acte Dépensé:</strong> {{ detail.montant_act_dep |currency:'TND':'symbol':'1.2-2' }}</li>
+        </ul>
+      </div>
+    
+      <div *ngFor="let bord of bordereau" class="bordereau-container">
+        <h4>Bordereau for Bulletin </h4>
+        <ul>
+          <li ><strong>Type d'Acte:</strong> {{ bord.type_act }}</li>
+          <li> <strong>Montant d'Acte Dépensé:</strong> {{ bord.montant_act_dep  |currency:'TND ':'symbol':'1.2-2'}}</li>
+          <li><strong>Montant d'Acte Remboursé:</strong> {{ bord.montant_act_rembor|currency:'TND':'symbol':'1.2-2' }}</li>
+        </ul>
+      </div>
     </div>
-  
-    <div *ngFor="let bord of bordereau" class="bordereau-container">
-      <h4>Bordereau for Bulletin </h4>
-      <ul>
-        <li ><strong>Type d'Activité:</strong> {{ bord.type_act }}</li>
-        <li> <strong>Montant d'Activité Dépensé:</strong> {{ bord.montant_act_dep  |currency:'TND ':'symbol':'1.2-2'}}</li>
-        <li><strong>Montant d'Activité Remboursé:</strong> {{ bord.montant_act_rembor|currency:'TND':'symbol':'1.2-2' }}</li>
-      </ul>
-    </div>
-  </div>
+ 
   </div>
   

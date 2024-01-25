@@ -38,7 +38,6 @@
         </div>
       </div>
   
-      <!-- Add the child dropdown inside the form -->
       <div *ngIf="bulletinF.get('typeSelection')?.value === 'enfant'">
         <label for="selectedEnfant">Sélectionnez un Enfant:</label>
         <select id="selectedEnfant" formControlName="selectedEnfant">
@@ -52,13 +51,11 @@
       <button type="submit" [disabled]="!bulletinF.valid">Ajouter</button>
     </form>
   
-    <!-- Display other information based on the selected type -->
     <div *ngIf="navigant">
       <h3>Informations du Navigant</h3>
       <p>Nom: {{ navigant.nom }}</p>
       
   
-      <!-- Display information for the Conjoint if the type is "conjoint" -->
       <div *ngIf="bulletinF.get('typeSelection')?.value === 'conjoint'">
         <h3>Informations du Conjoint</h3>
         <p>Nom: {{ navigant.nomConjoint }}</p>
