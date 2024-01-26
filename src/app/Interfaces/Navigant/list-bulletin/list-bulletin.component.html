@@ -26,27 +26,10 @@
         <td>{{ bulletin.montantRemborse | currency:'TND ':'symbol':'1.2-2' }}</td>
         <td>{{ bulletin.status }}</td>
         <td>
-          <button class="btn btn-info" (click)="showDetails()">Show Details</button>
+          <button class="btn btn-info" (click)="showDetails(bulletin.navigantId,bulletin.numBs)">Show Details</button>
         </td>
       </tr>
     </tbody>
   </table>
-<div  *ngIf="show" class="details-section">
-  <div  *ngFor="let detail of details" class="detail-container">
-    <h4>Details for Bulletin </h4>
-    <ul>
-      <li ><strong>Type d'Acte: </strong>{{ detail.type_act }}</li>
-      <li><strong>Montant d'Acte Dépensé:</strong> {{ detail.montant_act_dep |currency:'TND':'symbol':'1.2-2' }}</li>
-    </ul>
-  </div>
 
-  <div *ngFor="let bord of bordereau" class="bordereau-container">
-    <h4>Bordereau for Bulletin </h4>
-    <ul>
-      <li ><strong>Type d'Acte:</strong> {{ bord.type_act }}</li>
-      <li> <strong>Montant d'Acte Dépensé:</strong> {{ bord.montant_act_dep  |currency:'TND ':'symbol':'1.2-2'}}</li>
-      <li><strong>Montant d'Acte Remboursé:</strong> {{ bord.montant_act_rembor|currency:'TND':'symbol':'1.2-2' }}</li>
-    </ul>
-  </div>
-</div>
 </div>

@@ -19,29 +19,16 @@ export class ListBsNavigComponent implements OnInit {
   numBs:any;
   bulletin!:Bulletin;
   bulletins!:Bulletin[];
-  details!:DetailDepense[];
-  bordereau!:BordereauGAT[];
-  show=false;
   bulletinToSearch!:number;
 constructor(private activatedRoute: ActivatedRoute,
-  private servBull:BulletinService, private servDetail:DetailDepenseService,
-  private servBord:BordereauGATService,private fb:FormBuilder,private router:Router){}
+  private servBull:BulletinService,private fb:FormBuilder,private router:Router){}
 
   ngOnInit(): void {
     this.matricule = this.activatedRoute.snapshot.params['matricule'];
     this.servBull.getBulletinsByNavigant(this.matricule).subscribe((bulletinsData) => {
       console.log(bulletinsData);
       this.bulletins = bulletinsData;
-      for(let i = 0; i < this.bulletins.length; i++) {
-        this.servBord.getBordereauGATs(this.bulletins[i].numBs).subscribe((bordereaudata)=>{
-          console.log(bordereaudata);
-          this.bordereau = bordereaudata;
-        });
-        this.servDetail.getDetailDepenses(this.bulletins[i].numBs).subscribe((details)=>{
-          console.log(details);
-          this.details = details;
-        });
-      }
+     
     });
     
   }
@@ -60,12 +47,12 @@ constructor(private activatedRoute: ActivatedRoute,
 
 
   modifierBulletin(numBs: number){
-    this.router.navigate([`/modifierBulletin/${numBs}`])
+    this.router.navigate([`/admin/modifierBulletin/${numBs}`])
 
   }
 
-  showDetails(){
-    this.show=true;
+  showDetails(numBs: number){
+    this.router.navigate([`/admin/detailBulletin/${numBs}`])
       }
       
 }

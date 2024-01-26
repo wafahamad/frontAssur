@@ -24,6 +24,9 @@ import { ChargementBordereauComponent } from './Interfaces/Admin/chargement-bord
 import { ModifierBulletinComponent } from './Interfaces/Admin/modifier-bulletin/modifier-bulletin.component';
 import { GererDetailDepComponent } from './Interfaces/Admin/gerer-detail-dep/gerer-detail-dep.component';
 import { DetailsComponent } from './Interfaces/Admin/details/details.component';
+import { NavigDetailBullComponent } from './Interfaces/Navigant/navig-detail-bull/navig-detail-bull.component';
+import { DashboardNavigantComponent } from './Interfaces/Navigant/dashboard-navigant/dashboard-navigant.component';
+import { DashboardAdminComponent } from './Interfaces/Admin/dashboard-admin/dashboard-admin.component';
 
 
 @NgModule({
@@ -47,7 +50,10 @@ import { DetailsComponent } from './Interfaces/Admin/details/details.component';
     ChargementBordereauComponent,
     ModifierBulletinComponent,
     GererDetailDepComponent,
-    DetailsComponent
+    DetailsComponent,
+    NavigDetailBullComponent,
+    DashboardNavigantComponent,
+    DashboardAdminComponent
   ],
   imports: [
     BrowserModule,

@@ -11,13 +11,13 @@ constructor(private activatedRoute: ActivatedRoute,public router: Router){}
 
 login(){
 
-  this.router.navigate(['/loginNavigant']);
+  this.router.navigate(['/dashboard/loginNavigant']);
   
 }
 
 loginAdmin(){
 
-  this.router.navigate(['/loginAdmin']);
+  this.router.navigate(['/admin/loginAdmin']);
   
 }
 }

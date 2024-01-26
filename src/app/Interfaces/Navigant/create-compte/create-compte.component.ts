@@ -71,7 +71,7 @@ export class CreateCompteComponent {
       .subscribe((navigant) => {
         this.navigants.push();
         alert('Welcome to AssurNavigant! ');
-        this.router.navigate(['/loginNavigant']);
+        this.router.navigate(['/dashboard/loginNavigant']);
       });
   }
 }

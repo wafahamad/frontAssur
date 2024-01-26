@@ -41,7 +41,7 @@ ngOnInit(): void {
           console.log(JSON.parse(response)["token"]);
           
             localStorage.setItem('token', JSON.parse(response)["token"]);
-            this.router.navigate([`/homeNavigant/${usermatricule}`]);
+            this.router.navigate([`/dashboard/homeNavigant/${usermatricule}`]);
 
 
         

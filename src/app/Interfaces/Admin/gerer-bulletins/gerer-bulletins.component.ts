@@ -123,7 +123,7 @@ export class GererBulletinsComponent implements OnInit {
       (result) => {
         console.log('Bulletin request submitted successfully:', result);
         this.bulletinF.reset();
-        this.router.navigate([`/gererDetailDepense/${bulletinData.numBs}`])
+        this.router.navigate([`/admin/gererDetailDepense/${bulletinData.numBs}`])
       },
       (error) => {
         console.error('Error submitting Bulletin request:', error);

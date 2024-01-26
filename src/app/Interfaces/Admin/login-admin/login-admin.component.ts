@@ -41,7 +41,7 @@ export class LoginAdminComponent {
             console.log(JSON.parse(response)["token"]);
             
               localStorage.setItem('token', JSON.parse(response)["token"]);
-              this.router.navigate([`/homeAdmin`]);
+              this.router.navigate([`/admin/homeAdmin`]);
   
   
           

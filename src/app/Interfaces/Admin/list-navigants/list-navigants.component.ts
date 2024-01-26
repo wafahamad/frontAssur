@@ -18,7 +18,7 @@ export class ListNavigantsComponent implements OnInit {
     this.navigants=data);
   }
   showBulletin(matricule :number){
-    this.router.navigate([`/listBsNavigant/${matricule}`])
+    this.router.navigate([`/admin/listBsNavigant/${matricule}`])
   }
   supprimerNavigant(matricule: number) {
     this.servNavigant.deleteNavigant(matricule).subscribe(() => {

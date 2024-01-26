@@ -8,12 +8,11 @@ import { BulletinService } from 'src/app/Services/bulletin.service';
 import { DetailDepenseService } from 'src/app/Services/detail-depense.service';
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.css']
+  selector: 'app-navig-detail-bull',
+  templateUrl: './navig-detail-bull.component.html',
+  styleUrls: ['./navig-detail-bull.component.css']
 })
-export class DetailsComponent implements OnInit {
-
+export class NavigDetailBullComponent implements OnInit {
   numBs:any;
   bulletin!:Bulletin;
   bulletins!:Bulletin[];
