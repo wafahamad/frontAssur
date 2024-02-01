@@ -22,13 +22,13 @@ export class GererBulletinsComponent implements OnInit {
   navigant!: Navigant;
   enfants: NavigEnfant[] = [];
   bulletinF!: FormGroup;
-
+  isNavigantIdInvalid:boolean=false
   constructor(
     private servBull: BulletinService,
     private servNavigant: NavigantServiceService,
     private servEnfant: NavigEnfantService,
     private fb: FormBuilder,
-    private router:Router
+    private router:Router,
   ) {}
 
   ngOnInit(): void {
@@ -53,75 +53,84 @@ export class GererBulletinsComponent implements OnInit {
       navigantIdControl.valueChanges.subscribe((navigantId) => {
         this.matricule = navigantId;
         this.enfants = [];
+        this.servNavigant.getNavigantById(this.matricule).subscribe(
+          (navigant: Navigant) => {
+            if (navigant) {
+              this.isNavigantIdInvalid = false;
+            } 
+          },
+          (error) => {
+            console.error("Error fetching navigant:", error);
+            this.isNavigantIdInvalid = true; 
+          }
+        );
         this.servEnfant.getNavigEnfants(this.matricule).subscribe(
           (enfants: NavigEnfant[]) => {
-
-            if (enfants && enfants.length > 0) {              this.enfants = enfants; 
+            if (enfants && enfants.length > 0) {      this.enfants = enfants; 
             } else {
               console.error('No enfants found for the given matricule:', this.matricule);
             }
-          },
-        );
-      
+          }, );
       });
     }
   }
   submit() {
     if (this.bulletinF.valid) {
+          
       const bulletinData = this.bulletinF.value;
-      if (bulletinData.typeSelection === 'navigant') {
-        this.servNavigant.getNavigantById(this.matricule).subscribe(
-          (navigant: Navigant) => {
-            this.navigant = navigant;
-            bulletinData.malade = navigant.nom;
-            this.submitBulletin(bulletinData);
-          },
-          (error) => {
-            console.error('Error retrieving navigant information:', error);
-          }
-        );
-      } else if (bulletinData.typeSelection === 'conjoint') {
-        this.servNavigant.getNavigantById(this.matricule).subscribe(
-          (navigant: Navigant) => {
-            this.navigant = navigant;
-            bulletinData.malade = navigant.nomConjoint;
-            this.submitBulletin(bulletinData);
-          },
-          (error) => {
-            console.error('Error retrieving navigant information:', error);
-          }
-        );
-        
-      } else if (bulletinData.typeSelection === 'enfant') {
-        this.servEnfant.getNavigEnfants(this.matricule).subscribe(
-          (enfants: NavigEnfant[]) => {
-            if (enfants && enfants.length > 0) {
-              this.enfants = enfants;
-              const selectedEnfantId = +bulletinData.selectedEnfant;
-              const selectedEnfant = enfants.find(enfant => enfant.idE === selectedEnfantId);
-
-              if (selectedEnfant) {
-                bulletinData.malade = `${selectedEnfant.nom} ${selectedEnfant.prenom}`;
-                this.submitBulletin(bulletinData);
-              } else {
-                console.error('Selected enfant not found:', selectedEnfantId);
-              }
-            } else {
-              console.error('No enfants found for the given matricule:', this.matricule);
+        // Check if numBs already exists
+        this.servBull.getBulletinByNumBs(bulletinData.numBs).subscribe(
+          (existingBulletin: Bulletin) => {
+            if (existingBulletin) {
+             alert('Bulletin  already exists:');
+            }}, 
+            (error) => {
+            if (bulletinData.typeSelection === 'navigant') {
+              this.servNavigant.getNavigantById(this.matricule).subscribe(
+                (navigant: Navigant) => {
+                  if (navigant) {
+                    this.navigant = navigant;
+                    bulletinData.malade = navigant.nom;
+                    this.submitBulletin(bulletinData);
+                  }
+                },
+              );
+            } else if (bulletinData.typeSelection === 'conjoint') {
+              this.servNavigant.getNavigantById(this.matricule).subscribe(
+                (navigant: Navigant) => {
+                  this.navigant = navigant;
+                  bulletinData.malade = navigant.nomConjoint;
+                  this.submitBulletin(bulletinData);
+                },
+              );
+            } else if (bulletinData.typeSelection === 'enfant') {
+              this.servEnfant.getNavigEnfants(this.matricule).subscribe(
+                (enfants: NavigEnfant[]) => {
+                  if (enfants && enfants.length > 0) {
+                    this.enfants = enfants;
+                    const selectedEnfantId = +bulletinData.selectedEnfant;
+                    const selectedEnfant = enfants.find(enfant => enfant.idE === selectedEnfantId);
+                    if (selectedEnfant) {
+                      bulletinData.malade = `${selectedEnfant.nom} ${selectedEnfant.prenom}`;
+                      this.submitBulletin(bulletinData);
+                    } else {
+                      console.error('Selected enfant not found:', selectedEnfantId);
+                    }
+                  } else {
+                    console.error('No enfants found for the given matricule:', this.matricule);
+                  }
+                },
+              );
             }
-          },
-          (error) => {
-            console.error('Error retrieving enfant information:', error);
+          });
           }
-        );
-      }
-    }
+      
   }
 
   submitBulletin(bulletinData: Bulletin) {
     this.servBull.addBulletin(bulletinData).subscribe(
       (result) => {
-        console.log('Bulletin request submitted successfully:', result);
+        alert('Bulletin request submitted successfully');
         this.bulletinF.reset();
         this.router.navigate([`/admin/gererDetailDepense/${bulletinData.numBs}`])
       },

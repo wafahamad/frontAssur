@@ -15,7 +15,7 @@ export class BordereauGATService {
     return this.http.get<BordereauGAT[]>(`${apiUrl}/${numBs}`);
   }
 
-  getBordereauGATById(idB: string): Observable<BordereauGAT> {
+  getBordereauGATById(idB: number): Observable<BordereauGAT> {
     return this.http.get<BordereauGAT>(`${apiUrl}/${idB}`);
   }
 
@@ -23,11 +23,11 @@ export class BordereauGATService {
     return this.http.post<BordereauGAT>(`${apiUrl}/ajout`, bordereauGAT);
   }
 
-  updateBordereauGAT(idB: string, updatedBordereauGAT: BordereauGAT): Observable<any> {
+  updateBordereauGAT(idB: number, updatedBordereauGAT: BordereauGAT): Observable<any> {
     return this.http.put<any>(`${apiUrl}/updateBord/${idB}`, updatedBordereauGAT);
   }
 
-  deleteBordereauGAT(idB: string): Observable<any> {
+  deleteBordereauGAT(idB: number): Observable<any> {
     return this.http.delete<any>(`${apiUrl}/deleteBord/${idB}`);
   }
 }

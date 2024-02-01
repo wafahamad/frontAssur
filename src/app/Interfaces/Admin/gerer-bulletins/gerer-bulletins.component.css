@@ -57,5 +57,6 @@ div {
     margin-bottom: 10px;
   }
   
-  /* Add additional styles as needed */
-  
+  .invalid-matricule input {
+    background-color: #b92c2c;  
+  }

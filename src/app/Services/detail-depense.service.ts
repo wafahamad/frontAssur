@@ -15,7 +15,7 @@ export class DetailDepenseService {
     return this.http.get<DetailDepense[]>(`${apiUrl}/${numBs}`);
   }
 
-  getDetailDepenseById(idD: string): Observable<DetailDepense> {
+  getDetailDepenseById(idD: number): Observable<DetailDepense> {
     return this.http.get<DetailDepense>(`${apiUrl}/${idD}`);
   }
 
@@ -23,11 +23,11 @@ export class DetailDepenseService {
     return this.http.post<DetailDepense>(`${apiUrl}/ajout`, detailDepense);
   }
 
-  updateDetailDepense(idD: string, updatedDetailDepense: DetailDepense): Observable<any> {
+  updateDetailDepense(idD: number, updatedDetailDepense: DetailDepense): Observable<any> {
     return this.http.put<any>(`${apiUrl}/update/${idD}`, updatedDetailDepense);
   }
 
-  deleteDetailDepense(idD: string): Observable<any> {
+  deleteDetailDepense(idD: number): Observable<any> {
     return this.http.delete<any>(`${apiUrl}/delete/${idD}`);
   }
 }

@@ -14,11 +14,11 @@ import { DetailDepenseService } from 'src/app/Services/detail-depense.service';
 })
 export class DetailsComponent implements OnInit {
 
-  numBs:any;
+  numBs :any;idB:any; idD:any;
   bulletin!:Bulletin;
   bulletins!:Bulletin[];
   details!:DetailDepense[];
-  bordereau!:BordereauGAT[];
+  bordereau!:BordereauGAT[]; 
   constructor(private activatedRoute: ActivatedRoute,
     private servBull:BulletinService, private servDetail:DetailDepenseService,
     private servBord:BordereauGATService){}
@@ -36,6 +36,18 @@ export class DetailsComponent implements OnInit {
           this.details = details;
         });
       
+    });
+   }
+   supprimerBordereau(idB:number){
+    this.servBord.deleteBordereauGAT(idB).subscribe(() => {
+      this.bordereau = this.bordereau.filter(bordereau => bordereau.idB !== idB);
+      alert(`Supprimer bordereau,${idB}`);
+    });
+   }
+   supprimerDetailDep(idD:number){
+    this.servDetail.deleteDetailDepense(idD).subscribe(() => {
+      this.details = this.details.filter(detail => detail.idD !== idD);
+      alert(`Supprimer détails depensé,${idD}`);
     });
    }
 }

@@ -18,13 +18,13 @@
         <input type="text" id="status" formControlName="status" />
       </div>
   
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'invalid-matricule': isNavigantIdInvalid}">
         <label for="navigantId">Navigant ID:</label>
         <input type="text" id="navigantId" formControlName="navigantId" />
       </div>
   
       <div class="form-group">
-        <label>Type de Sélection:</label>
+        <label>Malade:</label>
         <div>
           <label>
             <input type="radio" formControlName="typeSelection" value="navigant" /> Navigant
