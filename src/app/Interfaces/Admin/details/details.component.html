@@ -1,8 +1,12 @@
+
 <app-nav-admin></app-nav-admin>
 <div class="container">
+  <button class="btn btn-primary" (click)="printPage()">Imprimer Bulletin</button>
+
 <div class="details-section">
+  <h4>Details Depensé Bulletin  </h4>
     <div  *ngFor="let detail of details" class="detail-container" >
-      <h4>Details for Bulletin </h4>
+      
       <ul>
         <li ><strong>Type d'Acte: </strong>{{ detail.type_act }}</li>
         <li><strong>Montant d'Acte Dépensé:</strong> {{ detail.montant_act_dep |currency:'TND':'symbol':'1.2-2' }}</li>
@@ -11,9 +15,9 @@
       </ul>
       
     </div>
-  
+    <h4>Bordereau GAT </h4>
     <div *ngFor="let bord of bordereau" class="bordereau-container">
-      <h4>Bordereau for Bulletin </h4>
+      
       <ul>
         <li ><strong>Type d'Acte:</strong> {{ bord.type_act }}</li>
         <li> <strong>Montant d'Acte Dépensé:</strong> {{ bord.montant_act_dep  |currency:'TND ':'symbol':'1.2-2'}}</li>
@@ -24,4 +28,50 @@
 
     </div>
   </div>
+ 
+</div>
+<div id="print-content" style="display: none;">
+  <img src="./../../../../assets/CTNlogo.png" alt="Logo" class="logo-img" style="width: 50px; height: auto; position: absolute; top: 0; right: 0;">
+  <div class="additional-elements" style="margin-bottom: 20px;">
+    <h4><strong>Bulletin N°</strong> {{ bulletin.numBs }}</h4>
+    <p><strong> Malade:</strong> {{ bulletin.malade }}</p>
+    <p><strong> Matricule Ascendant:</strong> {{ bulletin.navigantId }}</p>
+  </div>
+  <h4>Details Depensé Bulletin</h4>
+  <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; border: 1px solid black;">
+    <thead>
+      <tr>
+        <th style="background-color: #f2f2f2; padding: 8px;
+        text-align: left; border: 1px solid black;">Type d'Acte</th>
+        <th style="background-color: #f2f2f2; padding: 8px;
+        text-align: left; border: 1px solid black;">Montant d'Acte Dépensé</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let detail of details">
+        <td style=" padding: 8px; text-align: left;  border: 1px solid black;">{{ detail.type_act }}</td>
+        <td style=" padding: 8px;text-align: left; border: 1px solid black;">{{ detail.montant_act_dep | currency:'TND':'symbol':'1.2-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h4>Bordereau GAT</h4>
+  <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px; border: 1px solid black">
+    <thead>
+      <tr>
+        <th style="background-color: #f2f2f2; padding: 8px;
+        text-align: left; border: 1px solid black;" >Type d'Acte</th>
+        <th style="background-color: #f2f2f2; padding: 8px;
+        text-align: left; border: 1px solid black;">Montant d'Acte Dépensé</th>
+        <th style="background-color: #f2f2f2; padding: 8px;
+        text-align: left; border: 1px solid black;">Montant d'Acte Remboursé</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bord of bordereau">
+        <td style=" padding: 8px;text-align: left; border: 1px solid black;">{{ bord.type_act }}</td>
+        <td style=" padding: 8px;text-align: left; border: 1px solid black;">{{ bord.montant_act_dep | currency:'TND':'symbol':'1.2-2' }}</td>
+        <td style=" padding: 8px;text-align: left; border: 1px solid black;">{{ bord.montant_act_rembor | currency:'TND':'symbol':'1.2-2' }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

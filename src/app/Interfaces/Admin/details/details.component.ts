@@ -50,4 +50,20 @@ export class DetailsComponent implements OnInit {
       alert(`Supprimer détails depensé,${idD}`);
     });
    }
+   printPage(): void {
+    const printContent = document.getElementById('print-content');
+    if (printContent) {
+      // Create a new window or iframe
+      const printWindow = window.open('', '_blank');
+
+      if (printWindow) {
+        const printDocument = printWindow.document;
+        printDocument.write('<html><head><title>Imprimer Bulletin</title></head><body>');
+        printDocument.write(printContent.innerHTML);
+        printDocument.write('</body></html>');
+        printWindow.print();
+        printWindow.close();
+      }
+    }
+  }
 }

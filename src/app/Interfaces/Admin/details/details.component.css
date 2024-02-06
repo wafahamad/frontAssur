@@ -9,3 +9,53 @@
     padding: 10px;
     background-color: #f8f9fa;
   }
+/* Hide the print-content div by default */
+#print-content {
+  display: none;
+}
+
+/* Specify styles for printing */
+@media print {
+  .container {
+    display: none; /* Hide the regular content when printing */
+  }
+
+  #print-content {
+    display: block; /* Display the print-content div when printing */
+  }
+
+  /* Styles for the logo */
+  .logo-img {
+    width: 50px; /* Adjust the width of the logo as needed */
+    height: auto; /* Maintain aspect ratio */
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  /* Styles for the additional elements */
+  .additional-elements {
+    margin-bottom: 20px;
+  }
+
+  /* Styles for the tables */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+
+  table, th, td {
+    border: 1px solid black;
+  }
+
+  th, td {
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+}
+
